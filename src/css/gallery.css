@@ -65,6 +65,10 @@
     margin-top: 32px;
 }
 
+.gallery-item {
+    /* border: 2px solid #808080; */
+}
+
 .gallery-image {
     width: 360px;
     
@@ -74,6 +78,24 @@
 .gallery-image:hover {
     cursor: pointer;
     transform: scale(1.05);
+}
+
+.gallery-descr {
+    display: flex;
+    justify-content: space-around;
+    color: #2E2F42;
+
+    /* font-family: Montserrat; is not Montserrat */
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.04em;
+
+}
+
+.gallery-descr-header {    
+    font-weight: 600;
+    line-height: 16px;
 }
 
 .sl-wrapper {
