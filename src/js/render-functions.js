@@ -9,18 +9,8 @@ import pathIcon from "../img/error-icon.svg";
 const galleryNode = document.querySelector(".gallery");
 
 export default function (images) {
-    if (images.length === 0) {
-        iziToast.show({
-            class: 'toast-message',
-            message: 'Sorry, there are no images matching your search query. Please try again!',
-            messageColor: '#fff',
-            iconUrl: pathIcon,
-            iconColor: '#fff',
-            backgroundColor: '#EF4040',
-            border: '2px solid #FFBEBE',
-            position: 'topRight',
-        })
-        galleryNode.innerHTML = '';
+    if (images.length === 0) {        
+        showMessage('Sorry, there are no images matching your search query. Please try again!', 'error')        
         return
     }
 
@@ -58,4 +48,30 @@ export default function (images) {
     galleryNode.innerHTML = markup;
     let gallery = new SimpleLightbox('.gallery-link', {captionsData: 'alt', overlayOpacity: 0.5});
     gallery.refresh();
+}
+
+export function showMessage(message, type) {
+    let backgroundColor = '#59A10D';
+    let borderColor = '#B5EA7C';
+    let iconUrl = '';
+    let iconColor = backgroundColor;
+    if (type === 'error') {
+        backgroundColor = '#EF4040';
+        borderColor = '#FFBEBE';
+        iconUrl = pathIcon;
+        iconColor = '#fff';
+
+        galleryNode.innerHTML = '';
+    } 
+
+    iziToast.show({
+        class: 'toast-message',
+        message,
+        messageColor: '#fff',
+        iconUrl,
+        iconColor,
+        backgroundColor,
+        border: `2px solid ${borderColor}`,
+        position: 'topRight',
+    })
 }
